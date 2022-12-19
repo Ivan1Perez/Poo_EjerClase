@@ -14,6 +14,10 @@ public class Jugador {
         mano = new Carta[0];
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public void addCarta(Carta carta){
         Carta[] aux = new Carta[mano.length+1];
         for(int i=0;i<mano.length;i++)
@@ -33,8 +37,14 @@ public class Jugador {
 
     @Override
     public String toString(){
-        return "Nombre: " + nombre + "\n" +
-                "Cartas: " + mano;
+        String salida = "Nombre: " + nombre + "\n";
+        salida+="Cartas: ";
+        for (Carta carta : mano)
+            salida+=carta+" ";
+
+        salida+="\nPuntuación: " + getPuntuacion();
+
+        return salida;
     }
 
 }
