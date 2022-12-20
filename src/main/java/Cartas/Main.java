@@ -3,7 +3,7 @@ package Cartas;
 //barajar cartas
 //coger carta arriba
 //coger carta abajo
-//mostrar última cartaxd
+//mostrar última carta
 
 public class Main {
     public static void main(String[] args) {
