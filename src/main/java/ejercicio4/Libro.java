@@ -17,22 +17,26 @@ public class Libro {
     }
 
     public boolean prestamo(int cantidad){
+        System.out.println("Préstamo de " + cantidad + " libros");
+
         if(cantidad<=cantidadInicial && cantidad>0 && cantidadActual>0) {
             cantidadActual -= cantidad;
             return true;
         }
         else {
-            System.out.println("No podemos prestar tantos libros");
+            System.out.println("No podemos prestar tantos libros.");
             return false;
         }
     }
 
     public boolean devolucion(int cantidad){
-        if(cantidad<=cantidadInicial && cantidadActual<cantidadInicial && cantidad>0) {
+        System.out.println("Devolución de " + cantidad + " libros");
+
+        if(cantidad<=cantidadInicial - cantidadActual && cantidad>0) {
             cantidadActual += cantidad;
             return true;
         }else{
-            System.out.println("Ya tenemos todos los libros. Gracias.");
+            System.out.println("No puedes devolver más libros de los que se te han prestado.");
             return false;
         }
     }

@@ -3,15 +3,18 @@ package ejercicio4;
 public class Main {
     public static void main(String[] args) {
 
+        boolean prestamoCorrecto;
         Libro  libro = new Libro("Pepe", "Las vidas de Bonifacio");
 
         System.out.println(libro);
 
-        libro.prestamo(3);
-        System.out.println(libro.getCantidadActual());
-        libro.devolucion(4);
+        prestamoCorrecto = libro.prestamo(4);
+        System.out.println("Cantidad actual: " + libro.getCantidadActual() + "\n");
 
-        System.out.println(libro);
+        if(prestamoCorrecto) {
+            libro.devolucion(5);
+            System.out.println("Cantidad actual: " + libro.getCantidadActual() + "\n");
+        }
 
     }
 }
