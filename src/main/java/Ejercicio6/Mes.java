@@ -33,6 +33,11 @@ public enum Mes {
         }
     }
 
+//    public int calendarioAnual(int anyo){
+//        for(int i=0;diasTotales())
+//
+//    }
+
     public boolean esBisiesto(int anyo){
         if(anyo%4==0) {
             if(anyo%100==0) {
