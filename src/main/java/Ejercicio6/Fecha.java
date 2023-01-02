@@ -14,9 +14,6 @@ public class Fecha {
         this.dia = dia;
         this.mes = mes;
         this.anyo = anyo;
-
-
-
     }
 
     public int getDia(){
@@ -56,10 +53,15 @@ public class Fecha {
         }
     }
 
-//    @Override
-//    public String calendarioAnual(){
-//        return for(int i=0; i<)
-//    }
+    public String calendarioAnual(){
+        String calendario = "";
+        System.out.println("Calendario anual " + anyo +":");
+        for(int i=0; i<365; i++) {
+            calendario += "Fecha:" + dia + "/" + mes + "/" + anyo + "\n";
+            sumarDia();
+        }
+        return calendario;
+    }
 
     @Override
     public String toString(){

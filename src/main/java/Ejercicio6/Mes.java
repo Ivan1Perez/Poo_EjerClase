@@ -53,7 +53,7 @@ public enum Mes {
 //            re
     }
 
-    public
+//    public
 
     Mes(String nombreMes, int[] diasMes){
         this.nombreMes = nombreMes;

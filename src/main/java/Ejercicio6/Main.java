@@ -12,6 +12,11 @@ public class Main {
         fecha1.sumarDia();
 
         System.out.println(fecha1);
+        System.out.println();
+
+        System.out.println(fecha1.calendarioAnual());
+        System.out.println(fecha1.calendarioAnual());
+        System.out.println(fecha1.calendarioAnual());
 
     }
 }
