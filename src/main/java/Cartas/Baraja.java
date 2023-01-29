@@ -73,6 +73,10 @@ public class Baraja {
         return cartas.length;
     }
 
+    public Carta[] getCartas() {
+        return cartas;
+    }
+
     @Override
     public String toString(){
         String salida = "";

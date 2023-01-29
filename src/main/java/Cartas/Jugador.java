@@ -27,12 +27,22 @@ public class Jugador {
     }
 
     public int getPuntuacion(){
+
         int puntuacion = 0;
 
-        for(Carta carta : mano)
-            puntuacion+=carta.getValor().getPuntuacion()[0];
+        for(Carta carta : mano){
+            if(carta.getValor().equals(Valor.UNO) && puntuacion < 11)
+                puntuacion+=carta.getValor().getPuntuacion()[1];
+            else
+                puntuacion+=carta.getValor().getPuntuacion()[0];
+        }
+
 
         return puntuacion;
+    }
+
+    public int puntuacionPasado(){
+        return -1;
     }
 
     @Override

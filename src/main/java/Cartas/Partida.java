@@ -8,13 +8,14 @@ public class Partida {
 
     public Partida(Jugador... jugadores){
         this.baraja = new Baraja();
-        this.pc = new Jugador("PC");
+        this.pc = new Jugador("La Banca");
         this.jugadores = jugadores;
     }
 
     public void start() {
 
-        baraja.shuffle();
+        ListaCartas l = new ListaCartas();
+        l.shuffle(baraja.getCartas());
 
         for (Jugador jugador : jugadores)
             juegaJugador(jugador);
@@ -43,56 +44,56 @@ public class Partida {
                 opcion = Entrada.getOption("Quieres otra carta? [Y|N]");
             else if (jugador.getPuntuacion() == 21)
                 System.out.println("BlackJack!\n");
-            else System.out.println("Te has pasado!\n");
+            else {
+                System.out.println("Te has pasado!\n");
+            }
         } while (jugador.getPuntuacion() < 21 && opcion.equals(Entrada.YES));
 
     }
 
     private void juegaMaquina(Jugador maquina){
-        boolean seHaPasado = false;
 
-        System.out.println("Es el turno de La Casa");
+        System.out.println("Es el turno de La Banca");
 
         do{
             maquina.addCarta(baraja.getDown());
-        }while(maquina.getPuntuacion() < 16);
+        }while(maquina.getPuntuacion() < 17);
 
         System.out.println(maquina);
 
-        if(maquina.getPuntuacion() == 21)
-            System.out.println("\nLa Casa gana");
-        else if(maquina.getPuntuacion() < 21){
-            checkGanadores();
+        if(maquina.getPuntuacion() == 21){
+            System.out.println("BlackJack!");
         }
-        else {
-            System.out.println("\nLa Casa se ha pasado!");
-            seHaPasado = true;
+        else if (maquina.getPuntuacion() > 21){
+            System.out.println("\nLa Banca se ha pasado!");
         }
 
-        maquinaLoose(seHaPasado);
-    }
+        checkGanadores();
 
-    private void maquinaLoose(boolean seHaPasado){
-        int i = 0;
-
-        if(seHaPasado){
-            while(i < jugadores.length){
-                if(jugadores[i].getPuntuacion() <= 21){
-                    System.out.println("jugador: " + jugadores[i].getNombre() + " gana.");
-                }
-                i++;
-            }
-        }
     }
 
     private void checkGanadores(){
-        int i = 0;
 
-        while(i < jugadores.length){
-            if(jugadores[i].getPuntuacion() > pc.getPuntuacion()){
-                System.out.println("jugador: " + jugadores[i].getNombre() + " gana.");
-            }
-            i++;
+        System.out.println("\nPuntuaciones:");
+
+        for (Jugador jugador : jugadores)
+            System.out.println(jugador.getNombre() + ": " + jugador.getPuntuacion());
+        System.out.println("Banca: " + pc.getPuntuacion());
+        System.out.println();
+
+        for(int i = 0 ; i < jugadores.length ; i++){
+            if(pc.getPuntuacion() <= 21){
+                if(jugadores[i].getPuntuacion() > pc.getPuntuacion() && jugadores[i].getPuntuacion() < 22){
+                    System.out.println("Jugador: " + jugadores[i].getNombre() + " gana!");
+                }
+                else if(jugadores[i].getPuntuacion() == pc.getPuntuacion())
+                    System.out.println("Jugador: " + jugadores[i].getNombre() + " empata!");
+                else
+                    System.out.println("Jugador: " + jugadores[i].getNombre() + " pierde!");
+            }else if (pc.getPuntuacion() > 21 && jugadores[i].getPuntuacion() < 22)
+                System.out.println("Jugador: " + jugadores[i].getNombre() + " gana!");
+            else if (pc.getPuntuacion() <= 21 && jugadores[i].getPuntuacion() > 22)
+                System.out.println("Jugador: " + jugadores[i].getNombre() + " pierde!");
         }
 
     }
