@@ -29,7 +29,7 @@ public class Main {
 //        System.out.println(jugador);
 
 
-        int cantidadJugadores = Entrada.getInt("Cuantos jugadores quieren jugar.");
+        int cantidadJugadores = Entrada.getInt("¿Cuántos jugadores quieren jugar?");
         Jugador[] jugadors = new Jugador[cantidadJugadores];
 
         for(int i=0;i<cantidadJugadores;i++)
